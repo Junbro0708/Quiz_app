@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         cost_num++
         cost!!.text = "$cost_num / 10"
 
-        if(cost_num == 11) {
+        if(cost_num >= 11) {
             cost!!.text = " 문제풀기 성공!! "
         }
     }
@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
 
             }
             when(score) {
-                in 0 .. 20 -> quiz.setTextColor(Color.RED)
+                in 0 .. 20 -> quiz.setTextColor((Color.parseColor("#FF0000")))
                 in 21 .. 50 -> quiz.setTextColor(Color.argb(255,255, 127,0))
                 in 51 .. 80 -> quiz.setTextColor(Color.YELLOW)
                 in 81 .. 100 -> quiz.setTextColor(Color.BLACK)
@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
         cost_num++
         cost!!.text = "$cost_num / 10"
 
-        if(cost_num == 11) {
+        if(cost_num >= 11) {
             cost!!.text = " 문제풀기 성공!! "
         }
     }
