@@ -4,6 +4,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -11,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     var num: Int = 1
     var score: Int = 0
+    var cost_num: Int = 0
 
 
     private val text = hashMapOf(1 to "글로벌미디어학부는 IT대학이다.",
@@ -58,8 +60,14 @@ class MainActivity : AppCompatActivity() {
         if(num >= 12) {
             Toast.makeText(this, "문제를 다 풀었습니다.", Toast.LENGTH_SHORT).show()
             quiz!!.text = score.toString() + "점"
-        }
 
+        }
+        cost_num++
+        cost!!.text = "$cost_num / 10"
+
+        if(cost_num == 11) {
+            cost!!.text = " 문제풀기 성공!! "
+        }
     }
 
     fun onButtonXClicked(v: View) {
@@ -72,6 +80,7 @@ class MainActivity : AppCompatActivity() {
                 if(text_a[i] == text_c[i]) {
                     score += 10
                 }
+
             }
             when(score) {
                 in 0 .. 20 -> quiz.setTextColor(Color.RED)
@@ -86,7 +95,12 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "문제를 다 풀었습니다.", Toast.LENGTH_SHORT).show()
             quiz!!.text = score.toString() + "점"
         }
+        cost_num++
+        cost!!.text = "$cost_num / 10"
 
+        if(cost_num == 11) {
+            cost!!.text = " 문제풀기 성공!! "
+        }
     }
 
 }
