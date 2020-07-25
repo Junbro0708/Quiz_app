@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Quiz_app</string>
+
+    <string name="q_01">글로벌미디어학부는 IT대학이다.</string>
+    <string name="q_02">숭실대학교는 상도역에 있다.</string>
+    <string name="q_03">준형이는 24살이다.</string>
+    <string name="q_04">종헌이형은 올해 졸업작품을 한다.</string>
+    <string name="q_05">준형이는 크게 될 인물이다.</string>
+    <string name="q_06">영준이형은 28살이다.</string>
+    <string name="q_07">종헌이형은 시원스쿨을 한다.</string>
+    <string name="q_08">롤을 제일 잘하는 사람은 준형이다.</string>
+    <string name="q_09">우리는 언타이틀이다.</string>
+    <string name="q_10">안드로이드 스터디는 재미없다.</string>
 </resources>
