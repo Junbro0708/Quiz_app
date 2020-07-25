@@ -1,6 +1,5 @@
 package com.example.quiz_app
 
-import android.annotation.SuppressLint
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,11 +7,9 @@ import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class MainActivity : AppCompatActivity() {
     var num: Int = 1 // 문제
     var score: Int = 0 // 점수
-    var cost_num: Int = 0 // 카운트
 
     val question = arrayOf(
         Question(R.string.q_01, true),
@@ -25,6 +22,9 @@ class MainActivity : AppCompatActivity() {
         Question(R.string.q_08, true),
         Question(R.string.q_09, true),
         Question(R.string.q_10, false),
+        Question(R.string.q_10, false),
+        Question(R.string.q_10, false),
+        Question(R.string.q_10, false),
         Question(R.string.q_10, false)
     )
 
@@ -34,11 +34,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
     }
 
     fun onButtonOClicked(v: View) {
-            quiz.setText(question[cost_num].quizNum)
+        if(num < 11) {
+            quiz.setText(question[num - 1].quizNum)
             q_answer.add(true)
 
             when {
@@ -54,33 +54,32 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-        num++
+            cost!!.text = "$num / 10"
+            num++
 
-        if(num == 12) {
-            when(score) {
-                in 0 .. 20 -> quiz.setTextColor(Color.RED)
-                in 21 .. 50 -> quiz.setTextColor(Color.argb(255,255, 127,0))
-                in 51 .. 80 -> quiz.setTextColor(Color.YELLOW)
-                in 81 .. 100 -> quiz.setTextColor(Color.BLACK)
+        }else if(num == 11) {
+            when (score) {
+                in 0..20 -> quiz.setTextColor(Color.RED)
+                in 21..50 -> quiz.setTextColor(Color.argb(255, 255, 127, 0))
+                in 51..80 -> quiz.setTextColor(Color.YELLOW)
+                in 81..100 -> quiz.setTextColor(Color.BLACK)
             }
             quiz.textSize += 10
-        }
-
-        if(num >= 12) {
-            Toast.makeText(this, "문제를 다 풀었습니다.", Toast.LENGTH_SHORT).show()
+            cost!!.text = " 문제풀기 성공!! "
             quiz!!.text = score.toString() + "점"
 
-        }
-        cost_num++
-        cost!!.text = "$cost_num / 10"
-
-        if(cost_num >= 11) {
+            num++
+        }else {
+            Toast.makeText(this, "문제를 다 풀었습니다.", Toast.LENGTH_SHORT).show()
             cost!!.text = " 문제풀기 성공!! "
         }
     }
 
+
+
     fun onButtonXClicked(v: View) {
-            quiz.setText(question[cost_num].quizNum)
+        if(num < 11) {
+            quiz.setText(question[num - 1].quizNum)
             q_answer.add(false)
 
             when {
@@ -96,28 +95,25 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-        num++
+            cost!!.text = "$num / 10"
+            num++
 
-        if(num == 12) {
-            when(score) {
-                in 0 .. 20 -> quiz.setTextColor((Color.parseColor("#FF0000")))
-                in 21 .. 50 -> quiz.setTextColor(Color.argb(255,255, 127,0))
-                in 51 .. 80 -> quiz.setTextColor(Color.YELLOW)
-                in 81 .. 100 -> quiz.setTextColor(Color.BLACK)
+        }else if(num == 11) {
+            when (score) {
+                in 0..20 -> quiz.setTextColor(Color.RED)
+                in 21..50 -> quiz.setTextColor(Color.argb(255, 255, 127, 0))
+                in 51..80 -> quiz.setTextColor(Color.YELLOW)
+                in 81..100 -> quiz.setTextColor(Color.BLACK)
             }
             quiz.textSize += 10
-        }
-
-        if(num >= 12) {
-            Toast.makeText(this, "문제를 다 풀었습니다.", Toast.LENGTH_SHORT).show()
-            quiz!!.text = score.toString() + "점"
-        }
-        cost_num++
-        cost!!.text = "$cost_num / 10"
-
-        if(cost_num >= 11) {
             cost!!.text = " 문제풀기 성공!! "
+            quiz!!.text = score.toString() + "점"
+
+            num++
+        }else {
+            Toast.makeText(this, "문제를 다 풀었습니다.", Toast.LENGTH_SHORT).show()
+            cost!!.text = " 문제풀기 성공!! "
+        }
         }
     }
 
-}
