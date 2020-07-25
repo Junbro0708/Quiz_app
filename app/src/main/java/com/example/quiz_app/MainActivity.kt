@@ -14,6 +14,18 @@ class MainActivity : AppCompatActivity() {
     var score: Int = 0 // 점수
     var cost_num: Int = 0 // 카운트
 
+    val question = arrayOf(
+        Question(R.string.q_01, true),
+        Question(R.string.q_02, false),
+        Question(R.string.q_03, true),
+        Question(R.string.q_04, false),
+        Question(R.string.q_05, true),
+        Question(R.string.q_06, false),
+        Question(R.string.q_07, false),
+        Question(R.string.q_08, true),
+        Question(R.string.q_09, true),
+        Question(R.string.q_10, false))
+
 
     private val text = hashMapOf(1 to "글로벌미디어학부는 IT대학이다.",
         2 to "숭실대학교는 상도역에 있다.",
