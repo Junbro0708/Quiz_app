@@ -33,12 +33,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onButtonOClicked(v: View) {
+        q_answer.add(true)
+
         if (num < 10) {
             quiz.setText(question[num].quizNum)
-            q_answer.add(true)
-
             if(num == 0) {
-                Toast.makeText(this, "문제 시작!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.start_quiz, Toast.LENGTH_SHORT).show()
             }else {
                 grading(num)
             }
@@ -47,22 +47,23 @@ class MainActivity : AppCompatActivity() {
             num++
 
         } else if (num == 10) {
+            grading(num)
             grade(score)
             num++
         } else {
-            Toast.makeText(this, "문제를 다 풀었습니다.", Toast.LENGTH_SHORT).show()
-            cost!!.text = " 문제풀기 성공!! "
+            Toast.makeText(this, R.string.al_quiz, Toast.LENGTH_SHORT).show()
+            cost!!.setText(R.string.com_quiz)
         }
     }
 
 
     fun onButtonXClicked(v: View) {
+        q_answer.add(false)
+
         if (num < 10) {
             quiz.setText(question[num].quizNum)
-            q_answer.add(false)
-
             if(num == 0) {
-                Toast.makeText(this, "문제 시작!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.start_quiz, Toast.LENGTH_SHORT).show()
             }else {
                 grading(num)
             }
@@ -71,11 +72,12 @@ class MainActivity : AppCompatActivity() {
             num++
 
         } else if (num == 10) {
+            grading(num)
             grade(score)
             num++
         } else {
-            Toast.makeText(this, "문제를 다 풀었습니다.", Toast.LENGTH_SHORT).show()
-            cost!!.text = " 문제풀기 성공!! "
+            Toast.makeText(this, R.string.al_quiz, Toast.LENGTH_SHORT).show()
+            cost!!.setText(R.string.com_quiz)
         }
     }
 
@@ -87,16 +89,16 @@ class MainActivity : AppCompatActivity() {
             in 81..100 -> quiz.setTextColor(Color.BLACK)
         }
         quiz.textSize += 10
-        cost!!.text = " 문제풀기 성공!! "
+        cost!!.setText(R.string.com_quiz)
         quiz!!.text = score.toString() + "점"
     }
 
     fun grading(num: Int) {
         if(question[num - 1].answer == q_answer[num]){
-                Toast.makeText(this, "정답입니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.correct, Toast.LENGTH_SHORT).show()
                 score += 10
         }else{
-            Toast.makeText(this, "오답입니다.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.un_correct, Toast.LENGTH_SHORT).show()
         }
     }
 }

@@ -11,4 +11,10 @@
     <string name="q_08">롤을 제일 잘하는 사람은 준형이다.</string>
     <string name="q_09">우리는 언타이틀이다.</string>
     <string name="q_10">안드로이드 스터디는 재미없다.</string>
+
+    <string name="correct">정답입니다.</string>
+    <string name="un_correct">오답입니다.</string>
+    <string name="start_quiz">문제 시작!</string>
+    <string name="al_quiz">문제를 모두 풀었습니다.</string>
+    <string name="com_quiz">문제풀기 성공!</string>
 </resources>
